@@ -68,6 +68,31 @@ public class RobotController {
         return "Moving backRight.";
     }
 
+    @RequestMapping("/forward")
+    public String forward() {
+        initPins();
+
+        frontLeft.high();
+        frontRight.high();
+        backLeft.low();
+        backRight.low();
+
+        return "Moving Forward.";
+    }
+
+    @RequestMapping("/stop")
+    public String stop() {
+        initPins();
+
+        frontLeft.low();
+        frontRight.low();
+        backLeft.low();
+        backRight.low();
+
+        return "Moving Forward.";
+    }
+
+
     private void initPins(){
         if(frontLeft == null){
             GpioController gpio = GpioFactory.getInstance();
